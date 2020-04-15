@@ -26,7 +26,7 @@ function getCityCoords($city, $key) {
 
     try {
         $result = json_decode($answer, true, 512);
-        if (!isset($result['response'])) {
+        if (!isset($result['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['Point']['pos'])) {
             return false;
         }
         return $result['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['Point']['pos'];
