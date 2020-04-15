@@ -1,0 +1,24 @@
+<img class="b-current-weather-icon" src="https://yastatic.net/weather/i/icons/blueye/color/svg/<%=weather_data.icon%>.svg" alt="weather"/><br/>
+Температура: <%= weather_data.temp %>&#176;<br/>
+По ощущениям: <%= weather_data.feels_like %>&#176;<br/>
+Скорость ветра: <%= weather_data.wind_speed %> м/с<br/>
+Давление: <%= weather_data.pressure_mm %> мм рт. ст.<br/>
+<%= conditions[weather_data.condition] %><br/>
+<% if([1, 2, 3].indexOf(weather_data.day_forecast.prec_type) !== -1) { %>
+    Будет
+    <%= prec_strengths[weather_data.day_forecast.prec_strength]%>
+    дождь
+    <% if (weather_data.day_forecast.prec_type === 3) { %>со снегом<% } %>
+    - стоит взять зонт<br/>
+<% } %>
+<% if (weather_data.temp >= 25) { %>
+    Будет жарко - шорты и майка подойдут
+<% } else if (weather_data.temp  >= 18) { %>
+    Легкая ветровка будет в самый раз
+<% } else if (weather_data.temp  >= 0) { %>
+    На улице прохладно - наденьте куртку потеплее
+<% }  else if (weather_data.temp  >= -20) { %>
+    На улице мороз - шубка и шапка пригодятся
+<% } else if (weather_data.temp  < -20) { %>
+    Что-то за окном холодрыга - Останьтесь лучше дома :)
+<% } %>
